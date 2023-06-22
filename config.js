@@ -1,6 +1,6 @@
 module.exports = {
-    catalogUrl: null,
-    catalogTitle: "STAC Browser",
+    catalogUrl: "https://www.planet.com/data/stac/catalog.json",
+    catalogTitle: "Planet Labs - Open Data",
     allowExternalAccess: false,
     allowedDomains: [],
     detectLocaleFromBrowser: true,
