@@ -1,6 +1,8 @@
+const TITLE = "Planet Labs - Open Data";
+
 module.exports = {
     catalogUrl: "https://www.planet.com/data/stac/catalog.json",
-    catalogTitle: "Planet Labs - Open Data",
+    catalogTitle: TITLE,
     allowExternalAccess: false,
     allowedDomains: [],
     detectLocaleFromBrowser: true,
@@ -41,6 +43,11 @@ module.exports = {
     crossOriginMedia: null,
     requestHeaders: {},
     requestQueryParameters: {},
-    preprocessSTAC: null,
+    preprocessSTAC: stac => {
+        if (stac.id === "planet") {
+            stac.title = TITLE;
+        }
+        return stac;
+    },
     authConfig: null
 };
