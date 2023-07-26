@@ -25,6 +25,7 @@ certain *OGC API - Records* and *OGC API - Features* compliant servers.
   - [Languages](#languages)
   - [Themes](#themes)
   - [Basemaps](#basemaps)
+  - [Actions](#actions)
   - [Additional metadata fields](#additional-metadata-fields)
   - [Customize through root catalog](#customize-through-root-catalog)
   - [Custom extensions](#custom-extensions)
@@ -41,24 +42,27 @@ The catalog section of [STAC Index](https://stacindex.org) is also built on top 
 
 ## Get Started
 
-First, you need to install all dependencies:
+First, you need to clone or download this repository.
+
+Then switch into the newly created folder and install all dependencies:
 ```bash
 npm install
 ```
 
 By default, STAC Browser will let you browse all catalogs on STAC Index.
 
-To browse only your own static STAC catalog or STAC API, set the `catalogUrl` CLI parameter when running the dev server:
+To browse only your own static STAC catalog or STAC API, set the `catalogUrl` CLI parameter when running the dev server.
+In this example we point to EarthSearch (`https://earth-search.aws.element84.com/v1/`):
 
 ```bash
-npm start -- --open --catalogUrl="http://path/to/catalog.json"
+npm start -- --open --catalogUrl="https://earth-search.aws.element84.com/v1/"
 ```
-To open a local file on your system, see the chapter [Using Local Files](local_files.md).
+To open a local file on your system, see the chapter [Using Local Files](docs/local_files.md).
 
 If you'd like to publish the STAC Browser instance use the following command:
 
 ```bash
-npm run build -- --catalogUrl="http://path/to/catalog.json"
+npm run build -- --catalogUrl="https://earth-search.aws.element84.com/v1/"
 ```
 
 This will only work on the root path of your domain though. If you'd like to publish in a sub-folder, 
@@ -67,7 +71,9 @@ you can use the [`pathPrefix`](docs/options.md#pathprefix) option.
 After building, `dist/` will contain all assets necessary to
 host the browser. These can be manually copied to your web host of choice.
 
-You can customize STAC Browser, too. See the options and theming details below. If not stated otherwise, all options can either be specified via CLI or in the [config file](config.js).
+You can customize STAC Browser, too. See the options and theming details below.
+If not stated otherwise, all options can either be specified via CLI, ENV variables or in the [config file](config.js).
+You can also provide configuration options "at runtime" (after the build).
 
 ### Private query parameters
 
@@ -89,7 +95,7 @@ Please read the [migration documentation](docs/migrate.md) for details.
 
 ### Options
 
-STAC Browser supports customization through a long list of options that can be set in the [config.js file](config.js) or as CLI parameter.
+STAC Browser supports customization through a long list of options that can be set in various ways.
 
 Please read the **[documentation for the options](docs/options.md)**.
 
@@ -142,6 +148,12 @@ If you need even more flexibility, you need to dig into the Vue files and their 
 The file `basemaps.config.js` contains the configuration for the basemaps.
 You can update either just the `BASEMAPS` object or you can write a custom function `configureBasemap` that returns the desired options for [vue2-leaflet](https://vue2-leaflet.netlify.app/).
 [XYZ](https://vue2-leaflet.netlify.app/components/LTileLayer.html#props) and [WMS](https://vue2-leaflet.netlify.app/components/LWMSTileLayer.html#props) basemaps are supported and have different options that you can set.
+
+### Actions
+
+STAC Browser has a pluggable interface to share or open assets and links with other services, which we call "actions".
+
+More information about how to add or implement actions can be found in the **[documentation](docs/actions.md)**.
 
 ### Additional metadata fields
 

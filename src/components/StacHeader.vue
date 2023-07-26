@@ -41,9 +41,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import Source from './Source.vue';
 import StacLink from './StacLink.vue';
 import { BIconArrow90degUp, BIconBook, BIconFolderSymlink, BIconSearch, BIconLock, BIconUnlock } from "bootstrap-vue";
-import Source from './Source.vue';
 import STAC from '../models/stac';
 import Utils from '../utils';
 
@@ -95,7 +95,7 @@ export default {
         return null;
       }
       let dataLink;
-      if (this.data !== this.root && this.data instanceof STAC) {
+      if (this.data instanceof STAC && !this.data.equals(this.root)) {
         dataLink = this.data.getSearchLink();
       }
       if (dataLink) {
