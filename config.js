@@ -3,7 +3,7 @@ const TITLE = "Planet Labs - Open Data";
 module.exports = {
     catalogUrl: "https://www.planet.com/data/stac/catalog.json",
     catalogTitle: TITLE,
-    allowExternalAccess: false,
+    allowExternalAccess: true,
     allowedDomains: [],
     detectLocaleFromBrowser: true,
     storeLocale: true,
